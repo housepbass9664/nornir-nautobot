@@ -1,0 +1,6 @@
+{% if host.data.interfaces %}
+{% for intf in host.data.interfaces %}
+interface {{ intf.name }}
+   ip address {{ intf.ip_address }}
+{% endfor %}
+{% endif %}

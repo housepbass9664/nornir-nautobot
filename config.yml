@@ -1,0 +1,13 @@
+---
+
+inventory:
+  plugin: NautobotInventory
+  options:
+    nautobot_url: http://192.168.254.80
+    nautobot_token: 186a3a79c274bf1c7d5fb0358923c77d4a103e99
+    ssl_verify: False
+
+runner:
+  plugin: threaded
+  options: 
+    num_workers: 10

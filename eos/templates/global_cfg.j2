@@ -1,0 +1,29 @@
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$UqWIykK6qZ4sDDHF$bBVCUG7HLGt/n9be7FXKi0aqrC4nGc/PM3ViGvLZB8LnW5Za88hYVgOFqL22tmCUSN0CbAec1ASQ0eSFkcFpH1
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+management api http-commands
+   no shutdown
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+hostname {{ host }}
+!
+{% if host.data['pynautobot_dictionary']['config_context']['timezone'] %}
+clock timezone {{ host.data['pynautobot_dictionary']['config_context']['timezone'] }}
+{% endif %}
+{% for ntp_server in host.data['pynautobot_dictionary']['config_context']['ntp_servers']%}
+ntp server {{ ntp_server }}
+{% endfor %}
+!
+{% for name_server in host.data['pynautobot_dictionary']['config_context']['name_servers']%}
+ip name-server {{ name_server }}
+{% endfor %}

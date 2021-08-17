@@ -1,0 +1,9 @@
+nornir
+nornir_napalm
+nornir_netmiko
+nornir_netbox
+nornir_nautobot
+nornir_scrapli
+nornir_utils
+nornir_jinja2
+pynautobot
